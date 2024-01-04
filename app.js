@@ -1,6 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Kết nối MQTT
-  var client = mqtt.connect("wss://8b48e8b807d7405d9cc0013a12fd326b.s1.eu.hivemq.cloud:8884/mqtt);
+  var serverUrl = "wss://8b48e8b807d7405d9cc0013a12fd326b.s1.eu.hivemq.cloud:8884/mqtt";
+  var clientId = "client" + Math.random().toString(16).substr(2, 8);
+
+  var client = mqtt.connect(serverUrl, {
+    clientId: clientId,
+    username: "viettelxoay", // Thêm thông tin xác thực nếu cần thiết
+    password: "Pbl123456789@", // Thêm thông tin xác thực nếu cần thiết
+  });
 
   // Lấy các vị trí cần điền dữ liệu
   var nhiet = document.getElementById("nhiet");
