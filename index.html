@@ -19,11 +19,11 @@
       .cards {max-width: 700px; margin: 0 auto; display: grid; grid-gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));}
       .reading {font-size: 1.3rem;}
       .packet {color: #bebebe;}
-      .temperatureColor {color: #fd7e14;}
-      .humidityColor {color: #1b78e2;}
-      .gasColor {color: #15a415;}  /* Adjust color as needed for gas readings */
-      .fanColor {color: #00878F;}  /* Adjust color as needed for fan readings */
-      .statusreadColor {color: #702963; font-size:12px;}
+      .temperatureColor {color: #e71d0b;}
+      .tdsColor {color: #1b78e2;}
+      .NTUColor {color: #d56d1e;}  /* Adjust color as needed for gas readings */
+      .pHColor {color: #051639;}
+      .statusreadColor {color: #90217b; font-size:12px;}
       .LEDColor {color: #183153;}
       
       /* ----------------------------------- Toggle Switch */
@@ -105,7 +105,7 @@
   <body>    
     <br>
     
-    <!-- _ DISPLAYS MONITORING AND CONTROLLING ___________________________________________________________________________________________ -->
+    <!-- __ DISPLAYS MONITORING AND CONTROLLING ____________________________________________________________________________________________ -->
     <div class="content">
       <div class="cards">
         
@@ -115,17 +115,19 @@
             <h3 style="font-size: 1rem;">MONITORING</h3>
           </div>
           
-          <!-- Displays the humidity and temperature values received from ESP32. * -->
+          <!-- Displays the pH,TDS, NTU and temperature values received from ESP32. *** -->
           <h4 class="temperatureColor"><i class="fas fa-thermometer-half"></i> TEMPERATURE</h4>
-          <p class="temperatureColor"><span class="reading"><span id="ESP32_01_Temp"></span> &deg;C</span></p>
-          <h4 class="humidityColor"><i class="fas fa-tint"></i> HUMIDITY</h4>
-          <p class="humidityColor"><span class="reading"><span id="ESP32_01_Humd"></span> &percnt;</span></p>
-          <!-- ********************************************************************* -->
+          <p class="temperatureColor"><span class="reading"><span id="nhiet"></span> &deg;C</span></p>
+          
+          <h4 class="pHColor"><i class="fa fa-water"></i> pH</h4>
+          <p class="pHColor"><span class="reading"><span id="pH"></span> </span></p>
 
-          <!-- Displays the gas value received from ESP32. * -->
-          <h4 class="gasColor"><i class="fas fa-gas-pump"></i> GAS VALUE</h4>
-          <p class="gasColor"><span class="reading"><span id="ESP32_01_Gas"></span> ppm</span></p>
-          <!-- ********************************************************************* -->
+          <h4 class="tdsColor"><i class="fas fa-tint"></i> TDS</h4>
+          <p class="tdsColor"><span class="reading"><span id="TDS"></span>ppm</span></p>
+         
+          <h4 class="NTUColor"><i class="fas fa-tint"></i> ĐỘ ĐỤC</h4>
+          <p class="NTUColor"><span class="reading"><span id="NTU"></span> NTU</span></p>
+          <!-- *********************************************************************** -->
           
           <p class="statusreadColor"><span>Status Read Sensor MQ2 : </span><span id="ESP32_01_Status_Read_DHT11"></span></p>
         </div>
