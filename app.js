@@ -3,28 +3,32 @@ document.addEventListener("DOMContentLoaded", function () {
   var client = mqtt.connect("wss://broker.hivemq.com:8884/mqtt");
 
   // Lấy các vị trí cần điền dữ liệu
-  var temp = document.getElementById("ESP32_01_Temp");
-  var gas = document.getElementById("ESP32_01_Gas");
-  var humidity = document.getElementById("ESP32_01_Humd");
+  var nhiet = document.getElementById("nhiet");
+  var pH = document.getElementById("pH");
+  var TDS = document.getElementById("TDS");
+  var NTU = document.getElementById("NTU");
 
   // Kiểm tra xem các vị trí đã tìm thấy trong DOM chưa
-  if (temp && gas && humidity) {
+  if (nhiet && pH && TDS && NTU) {
     // Subcribe vào các topic
     client.on("connect", function () {
       console.log("Connected to shiftr.io broker");
-      client.subscribe("temperature");
-      client.subscribe("gas");
-      client.subscribe("humidity");
+      client.subscribe("nhiet");
+      client.subscribe("pH");
+      client.subscribe("TDS");
+      client.subscribe("NTU");
     });
 
     // Lấy tin nhắn từ các topic và cập nhật dữ liệu tương ứng
     client.on("message", function (topic, message) {
-      if (topic === "temperature") {
-        temp.innerHTML = message.toString();
-      } else if (topic === "gas") {
-        gas.innerHTML = message.toString();
-      } else if (topic === "humidity") {
-        humidity.innerHTML = message.toString();
+      if (topic === "nhiet") {
+        nhiet.innerHTML = message.toString();
+      } else if (topic === "pH") {
+        pH.innerHTML = message.toString();
+      } else if (topic === "TDS") {
+        TDS.innerHTML = message.toString();
+      } else if (topic === "NTU") {
+        NTU.innerHTML = message.toString();
       }
     });
   } else {
