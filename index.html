@@ -1,103 +1,31 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>ESP32 WITH DATABASE</title>
+    <title>THÔNG SỐ NƯỚC</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="icon" href="data:,">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/4.2.7/mqtt.min.js"></script>
     <style>
-      html {font-family: Arial; display: inline-block; text-align: center;}
-      p {font-size: 1.2rem;}
-      h4 {font-size: 0.8rem;}
+      html {font-family: Cambria; display: inline-block; text-align: center;}
+      p {font-size: 1.4rem;}
+      h4 {font-size: 1.0rem;}
       body {margin: 0;}
-      .topnav {overflow: hidden; background-color: #0c6980; color: white; font-size: 1.2rem;}
+      .topnav {overflow: hidden; background-color: #cb0f0f; color: rgb(142, 141, 98); font-size: 1.2rem;}
       .content {padding: 5px; }
-      .card {background-color: white; box-shadow: 0px 0px 10px 1px rgba(140,140,140,.5); border: 1px solid #0c6980; border-radius: 15px;}
-      .card.header {background-color: #0c6980; color: white; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-top-right-radius: 12px; border-top-left-radius: 12px;}
+      .card {background-color: rgb(255, 255, 255); box-shadow: 0px 0px 10px 1px rgba(140,140,140,.5); border: 1px solid #0c6980; border-radius: 15px;}
+      .card.header {background-color: #3a88ee; color: rgb(255, 255, 255); border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-top-right-radius: 12px; border-top-left-radius: 12px;}
       .cards {max-width: 700px; margin: 0 auto; display: grid; grid-gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));}
       .reading {font-size: 1.3rem;}
-      .packet {color: #bebebe;}
+      .packet {color: #ffffff;}
       .temperatureColor {color: #e71d0b;}
       .tdsColor {color: #1b78e2;}
       .NTUColor {color: #d56d1e;}  /* Adjust color as needed for gas readings */
       .pHColor {color: #051639;}
       .statusreadColor {color: #90217b; font-size:12px;}
       .LEDColor {color: #183153;}
-      
-      /* ----------------------------------- Toggle Switch */
-      .switch {
-        position: relative;
-        display: inline-block;
-        width: 50px;
-        height: 24px;
-      }
 
-      .switch input {display:none;}
-
-      .sliderTS {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #D3D3D3;
-        -webkit-transition: .4s;
-        transition: .4s;
-        border-radius: 34px;
-      }
-
-      .sliderTS:before {
-        position: absolute;
-        content: "";
-        height: 16px;
-        width: 16px;
-        left: 4px;
-        bottom: 4px;
-        background-color: #f7f7f7;
-        -webkit-transition: .4s;
-        transition: .4s;
-        border-radius: 50%;
-      }
-
-      input:checked + .sliderTS {
-        background-color: #00878F;
-      }
-
-      input:focus + .sliderTS {
-        box-shadow: 0 0 1px #2196F3;
-      }
-
-      input:checked + .sliderTS:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
-      }
-
-      .sliderTS:after {
-        content:'OFF';
-        color: white;
-        display: block;
-        position: absolute;
-        transform: translate(-50%,-50%);
-        top: 50%;
-        left: 70%;
-        font-size: 10px;
-        font-family: Verdana, sans-serif;
-      }
-
-      input:checked + .sliderTS:after {  
-        left: 25%;
-        content:'ON';
-      }
-
-      input:disabled + .sliderTS {  
-        opacity: 0.3;
-        cursor: not-allowed;
-        pointer-events: none;
-      }
       /* ----------------------------------- */
     </style>
   </head>
@@ -112,11 +40,11 @@
         <!-- == MONITORING ======================================================================================== -->
         <div class="card">
           <div class="card header">
-            <h3 style="font-size: 1rem;">MONITORING</h3>
+            <h3 style="font-size: 2rem;">CÁC CHỈ SỐ CỦA NƯỚC</h3>
           </div>
           
           <!-- Displays the pH,TDS, NTU and temperature values received from ESP32. *** -->
-          <h4 class="temperatureColor"><i class="fas fa-thermometer-half"></i> TEMPERATURE</h4>
+          <h4 class="temperatureColor"><i class="fas fa-thermometer-half"></i> NHIỆT ĐỘ</h4>
           <p class="temperatureColor"><span class="reading"><span id="nhiet"></span> &deg;C</span></p>
           
           <h4 class="pHColor"><i class="fa fa-water"></i> pH</h4>
@@ -129,7 +57,7 @@
           <p class="NTUColor"><span class="reading"><span id="NTU"></span> NTU</span></p>
           <!-- *********************************************************************** -->
           
-          <p class="statusreadColor"><span>Status Read Sensor MQ2 : </span><span id="ESP32_01_Status_Read_DHT11"></span></p>
+         
         </div>
         <script src="app.js"></script>
   </body>
