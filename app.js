@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Kết nối MQTT
-  var client = mqtt.connect("wss://8b48e8b807d7405d9cc0013a12fd326b.s1.eu.hivemq.cloud/api/v2/orgs/nl21sy/clusters/8b48e8b807d7405d9cc0013a12fd326b/);
+  var client = mqtt.connect("wss://8b48e8b807d7405d9cc0013a12fd326b.s1.eu.hivemq.cloud:8883/mqtt);
 
   // Lấy các vị trí cần điền dữ liệu
   var nhiet = document.getElementById("nhiet");
